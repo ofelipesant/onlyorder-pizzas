@@ -1,5 +1,4 @@
 import CreateOrder from "../CreateOrder";
-import OrderPreview from "../OrderPreview";
 
 export default function OrderMain(){
     return(
@@ -8,7 +7,6 @@ export default function OrderMain(){
             <h3>Preencha as informações para a criação do pedido:</h3>
 
             <CreateOrder/>
-            <OrderPreview/>
 
         </main>
     )
