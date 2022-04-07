@@ -7,18 +7,25 @@ export default function CreateOrder(){
     const {register, handleSubmit} = useForm()
     const [customerName, setCustomerName] = useState()
     const [productsSelected, setProductsSelected] = useState([])
-
+    const [productName, setProductName] = useState([])
+    
     const addProduct = (data) => {
+        data.productName = productName
         console.log(data)
         productsSelected.push(data.productPrice)
         setCustomerName(data.customerName)
         
         console.log(productsSelected)
+        console.log(productName)
     }
 
     const removeProduct = () => {
         productsSelected.pop()
         console.log(productsSelected)
+    }
+
+    const selectRadio = (event) => {
+        productName.push(event.target.id)
     }
 
     return(
@@ -37,6 +44,7 @@ export default function CreateOrder(){
 
                             <input 
                             {...register("productPrice",{required: true})}
+                            onClick={selectRadio}
                             id={element.name}
                             value={element.price}
                             type="radio" 
