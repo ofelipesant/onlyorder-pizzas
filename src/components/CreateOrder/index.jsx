@@ -9,6 +9,7 @@ export default function CreateOrder(){
     const [productsSelected, setProductsSelected] = useState([])
 
     const addProduct = (data) => {
+        console.log(data)
         productsSelected.push(data.productPrice)
         setCustomerName(data.customerName)
         
@@ -35,13 +36,11 @@ export default function CreateOrder(){
                             <span className="price-product">{`R$${element.price.toFixed(2)}`}</span>
 
                             <input 
-                            {...register("productSelected",{required: true})}
+                            {...register("productPrice",{required: true})}
                             id={element.name}
                             value={element.price}
                             type="radio" 
                             className="product-option"/>
-                            
-
                         </div>  
                     )
                 })}
