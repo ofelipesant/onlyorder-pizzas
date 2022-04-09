@@ -18,11 +18,13 @@ export default function OrderPreview(){
                 })} 
                 
                 <div className="order-total-value">
-                    {totalValue > 0 ? `R$${totalValue}.00` : null}
+                    {totalValue > 0 ? `Total: R$${totalValue}.00` : null}
                 </div>
 
-                <button className="create-order-butotn">CRIAR PEDIDO</button>
-
+                {
+                productsSelected != '' ? 
+                    (<button className="create-order-butotn">CRIAR PEDIDO</button>) : null
+                }
         </section>
     )
 }
