@@ -5,14 +5,14 @@ import { OrderContext } from "../../contexts/orderContext"
 
 
 export default function CreateOrder(){
-    const {productsSelected, setProductsSelected} = useContext(OrderContext)
-
+    const {productsSelected, setProductsSelected, customerName, setCustomerName, setTotalValue} = useContext(OrderContext)
     const {register, handleSubmit} = useForm()
-   
+
     const addProduct =  (data) => {
         const product = productsSelected
         product.push(data)
         setProductsSelected([...product])
+        console.log(productsSelected)
     }
     
 
@@ -22,16 +22,27 @@ export default function CreateOrder(){
         setProductsSelected([...product])
     }
 
- /*    useEffect(() => {
-        console.log(productsSelected)
-    },[productsSelected]) */
+    const changeHandler = (event) => {
+        setCustomerName(event.target.value)
+    }
+
+    useEffect(() => {
+        let value = 0
+        productsSelected.map((element)=>{
+            value = value + parseFloat(element.productPrice)
+        }) 
+        setTotalValue(value)
+    },[productsSelected])
 
 
     return(
         <section className="create-order">
             <form onSubmit={handleSubmit(addProduct)}>
                 <label>Informe o nome do cliente:</label>
-                <input type={"text"} className="input-customer" {...register("customerName", {required:true})}/>
+                <input 
+                type={"text"} className="input-customer" 
+                {...register("customerName", {required:true})}
+                onChange={ changeHandler }/>
 
                 <p>Selecione o produto:</p>
 
