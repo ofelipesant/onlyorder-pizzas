@@ -2,7 +2,21 @@ import { useContext } from "react"
 import { OrderContext } from "../../contexts/orderContext"
 
 export default function OrderPreview(){
-    const {productsSelected, customerName, totalValue} = useContext(OrderContext)
+    const {productsSelected, customerName, totalValue, orders, setOrders} = useContext(OrderContext)
+
+    const createOrder = async () => {
+        console.log(productsSelected)
+
+        let orderCreated = orders
+       
+        orderCreated.push({
+            name: customerName,
+            totalValue: totalValue,
+        })
+
+        await setOrders(orderCreated)
+        console.log(orders)
+    }
 
     return(
         <section className="order-preview">
@@ -23,7 +37,7 @@ export default function OrderPreview(){
 
                 {
                 productsSelected != '' ? 
-                    (<button className="create-order-butotn">CRIAR PEDIDO</button>) : null
+                    (<button className="create-order-butotn" onClick={createOrder}>CRIAR PEDIDO</button>) : null
                 }
         </section>
     )

@@ -12,7 +12,6 @@ export default function CreateOrder(){
         const product = productsSelected
         product.push(data)
         setProductsSelected([...product])
-        console.log(productsSelected)
     }
     
 
