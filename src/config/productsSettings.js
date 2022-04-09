@@ -1,22 +1,36 @@
 export const productSettings = [
     {
         name: "Pizza de Calabresa",
-        price: 50.00
     },
     {
         name: "Pizza de Mussarela",
-        price: 51.00
     },
     {
         name: "Pizza Quatro Queijos",
-        price: 52.00
     },
     {
         name: "Pizza Margerita",
-        price: 53.00
     },
     {
         name: "Pizza Bolonhesa",
-        price: 54.00
+    }
+]
+
+export const sizeSettings = [
+    {
+        size: "Pequena",
+        price: 45.00
+    },
+    {
+        size: "Média",
+        price: 48.00
+    },
+    {
+        size: "Grande",
+        price: 51.00
+    },
+    {
+        size: "Família",
+        price: 55.00
     }
 ]

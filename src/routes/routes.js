@@ -4,11 +4,13 @@ import Orders from "../pages/Orders";
 
 export default function OrderRoutes(){
     return(
-        <BrowserRouter>
-            <Routes>
-                <Route path={"/"} element={<Home/>}/>
-                <Route path={"/pedidos"} element={<Orders/>}/>
-            </Routes>
-        </BrowserRouter>
+ 
+            <BrowserRouter>
+                <Routes>
+                    <Route path={"/"} element={<Home/>}/>
+                    <Route path={"/pedidos"} element={<Orders/>}/>
+                </Routes>
+            </BrowserRouter>
+
     )
 }
