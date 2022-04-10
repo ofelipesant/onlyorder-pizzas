@@ -5,17 +5,33 @@ export default function OrderPreview(){
     const {productsSelected, customerName, totalValue, orders, setOrders} = useContext(OrderContext)
 
     const createOrder = async () => {
-        console.log(productsSelected)
-
+        
         let orderCreated = orders
-       
+    
+        let productsRegister = productsSelected.map((element) => {
+            return [element.productName, element.productPrice]
+        })
+
+
+        let productsFormated = productsRegister.forEach((element) => {
+            console.log(`name: ${element[0]} // price: ${element[1]}`)  
+        })
+        
+
         orderCreated.push({
             name: customerName,
             totalValue: totalValue,
+            products: [
+               
+                
+            ]
         })
 
         await setOrders(orderCreated)
+
         console.log(orders)
+        console.log(productsRegister)
+        
     }
 
     return(
