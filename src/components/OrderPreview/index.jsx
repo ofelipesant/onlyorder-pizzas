@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { OrderContext } from "../../contexts/orderContext"
 
 
@@ -16,13 +16,15 @@ export default function OrderPreview(){
             setProductsInOrder
     } = useContext(OrderContext)
 
+
     const createOrder = async () => {
-        
+
         let orderCreated = orders
         let newProductsInOrder = productsInOrder
         let productsRegister = productsSelected.map((element) => {
             return [element.productName, element.productPrice]
         })
+
 
          productsRegister.forEach((element) => {
             newProductsInOrder.push({
@@ -50,6 +52,10 @@ export default function OrderPreview(){
         console.log(orders)
           
     }
+
+    useEffect(() => {
+        console.log(orders)
+    },[])
 
     return(
         <section className="order-preview">
