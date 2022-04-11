@@ -14,9 +14,7 @@ export default function OrdersList(){
 
     return(
         <main>
-            {orders && orders.map((element, index) => {
-                <div key={index}>{element.customerName}</div>
-            })} 
+            
         </main>
     )
 }

@@ -16,7 +16,6 @@ export default function OrderPreview(){
             setProductsInOrder
     } = useContext(OrderContext)
 
-
     const createOrder = async () => {
 
         let orderCreated = orders
@@ -54,6 +53,8 @@ export default function OrderPreview(){
     }
 
     useEffect(() => {
+        let storedOrders = localStorage.getItem('orders')
+        setOrders(JSON.parse(storedOrders))
         console.log(orders)
     },[])
 
