@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react"
 import { OrderContext } from "../../contexts/orderContext"
+import OrdersCardList from "../OrdersCardList"
 
 export default function OrdersList(){
     const {orders, setOrders} = useContext(OrderContext)
@@ -10,11 +11,11 @@ export default function OrdersList(){
         setOrders(JSON.parse(storedOrders))
     }, [])
 
-    console.log(orders)
-
     return(
         <main>
-            
+            <section className="orders-list-section">
+                <OrdersCardList/>
+            </section>
         </main>
     )
 }

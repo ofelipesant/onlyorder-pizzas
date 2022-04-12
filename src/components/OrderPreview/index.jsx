@@ -37,7 +37,7 @@ export default function OrderPreview(){
         orderCreated.push({
             customerName: customerName,
             totalValueOrder: totalValue,
-            products: productsInOrder
+            products: productsInOrder,
         })
 
         await setOrders(orderCreated)
@@ -54,7 +54,12 @@ export default function OrderPreview(){
 
     useEffect(() => {
         let storedOrders = localStorage.getItem('orders')
-        setOrders(JSON.parse(storedOrders))
+        
+        if(storedOrders == null){
+            setOrders(orders)
+        } else{
+            setOrders( JSON.parse(storedOrders))
+        }
         console.log(orders)
     },[])
 
