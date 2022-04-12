@@ -14,8 +14,8 @@ export default function OrdersCardList() {
                         <p>{`R$${element.totalValueOrder}.00`}</p>
 
                         <div className="products-in-order">
-                            {element.products.map((product, index) => { 
-                                return(
+                            {element.products.map((product, index) => {
+                                return (
                                     <div key={index} className="products">
                                         <span>{product.name}</span>
                                         <span>{`R$${product.price}.00`}</span>
