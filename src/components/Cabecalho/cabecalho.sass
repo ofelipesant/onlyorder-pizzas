@@ -1,0 +1,34 @@
+@use '../../assets/styles/sass/_variables'
+
+.cabecalho
+    background-color: variables.$primary-color
+    height: 100px
+    width: 100%
+
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+
+    .navigation
+        width: 200px
+
+        display: flex
+        flex-direction: row
+        position: absolute
+        left: 0
+
+        .link
+            text-decoration: none
+
+        .menu
+            text-decoration: none !important
+            padding: 0 25px
+            font-family: variables.$title-font
+            color: white
+
+    .logo
+        width: 122px
+        padding-top: 33px
+        filter: drop-shadow(2px 2px 0 white)
+    
