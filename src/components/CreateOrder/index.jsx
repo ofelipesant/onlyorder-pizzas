@@ -2,18 +2,18 @@ import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { productSettings, sizeSettings } from "../../config/productsSettings"
 import { OrderContext } from "../../contexts/orderContext"
+import './create-order.sass'
 
+export default function CreateOrder() {
+    const { productsSelected, setProductsSelected, customerName, setCustomerName, setTotalValue } = useContext(OrderContext)
+    const { register, handleSubmit } = useForm()
 
-export default function CreateOrder(){
-    const {productsSelected, setProductsSelected, customerName, setCustomerName, setTotalValue} = useContext(OrderContext)
-    const {register, handleSubmit} = useForm()
-
-    const addProduct =  (data) => {
+    const addProduct = (data) => {
         const product = productsSelected
         product.push(data)
         setProductsSelected([...product])
     }
-    
+
 
     const removeProduct = (data) => {
         const product = productsSelected
@@ -27,59 +27,66 @@ export default function CreateOrder(){
 
     useEffect(() => {
         let value = 0
-        productsSelected.map((element)=>{
+        productsSelected.map((element) => {
             value = value + parseFloat(element.productPrice)
-        }) 
+        })
         setTotalValue(value)
-    },[productsSelected])
+    }, [productsSelected])
 
 
-    return(
+    return (
         <section className="create-order">
-            <form onSubmit={handleSubmit(addProduct)}>
-                <label>Informe o nome do cliente:</label>
-                <input 
-                type={"text"} className="input-customer" 
-                {...register("customerName", {required:true})}
-                onChange={ changeHandler }/>
+            <h1 className="main-title">Crie seu pedido</h1>
+            <h3 className="main-info">Preencha as informações para a criação do pedido:</h3>
 
-                <p>Selecione o produto:</p>
+            <form onSubmit={handleSubmit(addProduct)} className="create-order-content">
+                <label >Informe o nome do cliente:</label>
+                <input
+                    type={"text"} 
+                    className="input-customer"
+                    {...register("customerName", { required: true })}
+                    onChange={changeHandler}/>
 
-                {productSettings.map((element, index) => {
-                    return(
-                        <div key={index}>
-                            <label htmlFor="products">{element.name}</label>
-                           
-                            <input 
-                            {...register("productName",{required: true})}
-                            id={element.name}
-                            value={element.name}
-                            type="radio" 
-                            className="product-option"/>
-                        </div>  
-                    )
-                })}
+                <p className="subtitle">Selecione o produto:</p>
 
-                <p>Selecione o tamanho:</p>
-                {sizeSettings.map((element, index) => {
-                    return(
-                        <div key={index}>
-                            <label>{element.size}</label>
-                            <span>(R${element.price.toFixed(2)})</span>
-                            <input
-                            {...register("productPrice", {required: true})}
-                            value={element.price} 
-                            type="radio" 
-                            id="product-option" />
-                        </div>
-                    )
-                })}
+                <div className="product-options-container">
+                    {productSettings.map((element, index) => {
+                        return (
+                            <div key={index} className="product-list">
+                                <input
+                                    {...register("productName", { required: true })}
+                                    id={element.name}
+                                    value={element.name}
+                                    type="radio"
+                                    className="product-option" />
+                                <label htmlFor="products">{element.name}</label>
+                            </div>
+                        )
+                    })}
+                </div>
 
-            
-                <input type="submit" value="+" onSubmit={addProduct}/>
-                <input type="button" value="-" onClick={removeProduct} />
+                <p className="subtitle">Selecione o tamanho:</p>
+                <div className="attributes-container">
+                    {sizeSettings.map((element, index) => {
+                        return (
+                            <div key={index} className="attributes-list">
+                                <input
+                                    {...register("productPrice", { required: true })}
+                                    value={element.price}
+                                    type="radio"
+                                    className="product-option" />
+                                    <label>{element.size}</label>
+                                    <span>(R${element.price.toFixed(2)})</span>
+                            </div>
+                        )
+                    })}
+                </div>
+
+
+                <input type="submit" value="+" onSubmit={addProduct} className="order-button"/>
+                <input type="button" value="-" onClick={removeProduct} className="order-button"/>
             </form>
-                
+
         </section>
     )
 }

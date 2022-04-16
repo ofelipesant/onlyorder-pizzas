@@ -1,0 +1,59 @@
+@use '../../assets/styles/sass/_variables.sass'
+    
+.order-preview
+    width: variables.$section-width
+    height: variables.$section-height
+    background-color: variables.$preview-color
+    padding: 15px
+    position: relative
+    color: variables.$preview-font-color
+
+    .preview-title
+        font-family: variables.$title-font
+        font-size: 28px
+        font-weight: 500
+        position: absolute
+        top: -20px
+        left: 35%
+    
+    .preview-customer-name
+        font-family: variables.$title-font
+        font-size: 20px
+        font-weight: 500
+        padding-top: 10px
+    
+    .create-order-button
+        width: 160px
+        height: 40px
+        position: absolute
+        bottom: 5px
+        right: 5px
+        border: none
+        outline: none
+        background-color: variables.$primary-color
+        color: white
+        font-family: variables.$title-font
+        font-weight: 500
+        cursor: pointer
+
+    .create-order-button:hover
+        background-color: #3aa63f
+    
+    .order-total-value
+        position: absolute
+        bottom: 5px
+        left: 15px
+        font-size: 20px
+        font-family: variables.$title-font
+        font-weight: 400
+
+    .preview-list
+        font-family: variables.$text-font
+    
+    .preview-item
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        padding-top: 10px
+        border-bottom: solid 1px variables.$preview-font-color
+
