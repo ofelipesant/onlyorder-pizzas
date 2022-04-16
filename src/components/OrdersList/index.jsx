@@ -1,3 +1,4 @@
+import './orders-list.sass'
 import { useContext, useEffect } from "react"
 import { OrderContext } from "../../contexts/orderContext"
 import OrdersCardList from "../OrdersCardList"

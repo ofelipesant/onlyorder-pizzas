@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { OrderContext } from "../../contexts/orderContext"
+import './orders-card-list.sass'
 
 export default function OrdersCardList() {
     const { orders } = useContext(OrderContext)
@@ -11,7 +12,6 @@ export default function OrdersCardList() {
                 return (
                     <div key={index} className="order-card">
                         <h3 className="customer-title">{element.customerName}</h3>
-                        <p>{`R$${element.totalValueOrder}.00`}</p>
 
                         <div className="products-in-order">
                             {element.products.map((product, index) => {
@@ -22,6 +22,7 @@ export default function OrdersCardList() {
                                     </div>
                                 )
                             })}
+                            <p className="total-order">{`R$${element.totalValueOrder}.00`}</p>
                         </div>
                     </div>
                 )
