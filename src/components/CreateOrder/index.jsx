@@ -45,7 +45,8 @@ export default function CreateOrder() {
                     type={"text"} 
                     className="input-customer"
                     {...register("customerName", { required: true })}
-                    onChange={changeHandler}/>
+                    onChange={changeHandler}
+                    autoComplete="off"/>
 
                 <p className="subtitle">Selecione o produto:</p>
 
