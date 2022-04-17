@@ -8,6 +8,7 @@ export function OrderContextProvider({children}){
     const [customerName, setCustomerName] = useState()
     const [orders, setOrders] = useState([])
     const [productsInOrder, setProductsInOrder] = useState([])
+    const [showModal, setShowModal] = useState(false)
 
     return(
         <OrderContext.Provider value=
@@ -21,7 +22,9 @@ export function OrderContextProvider({children}){
             orders,
             setOrders,
             productsInOrder,
-            setProductsInOrder
+            setProductsInOrder,
+            showModal,
+            setShowModal
         }}>
 
             {children}

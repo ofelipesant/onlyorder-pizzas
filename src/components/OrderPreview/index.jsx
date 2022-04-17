@@ -1,6 +1,7 @@
 import'./order-preview.sass'
 import { useContext, useEffect } from "react"
 import { OrderContext } from "../../contexts/orderContext"
+import OrderCreatedModal from '../Modals/OrderCreatedModal'
 
 
 export default function OrderPreview(){
@@ -14,7 +15,9 @@ export default function OrderPreview(){
             orders, 
             setOrders, 
             productsInOrder, 
-            setProductsInOrder
+            setProductsInOrder,
+            showModal,
+            setShowModal
     } = useContext(OrderContext)
 
     const createOrder = async () => {
@@ -48,9 +51,15 @@ export default function OrderPreview(){
         setTotalValue(0)
         setProductsSelected([])
         setCustomerName('')
+        setShowModal(true)
 
+        setTimeout(() => {
+            setShowModal(false)
+        }, 3000)
         console.log(orders)
-          
+
+    
+
     }
 
     useEffect(() => {
@@ -87,6 +96,8 @@ export default function OrderPreview(){
                 productsSelected != '' ? 
                     (<button className="create-order-button" onClick={createOrder}>CRIAR PEDIDO</button>) : null
                 }
+
+                { showModal && (<OrderCreatedModal/>) }
         </section>
     )
 }

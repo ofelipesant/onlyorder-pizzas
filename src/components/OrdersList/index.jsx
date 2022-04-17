@@ -15,6 +15,7 @@ export default function OrdersList(){
     return(
         <main>
             <section className="orders-list-section">
+                <h1 className='section-title'>Pedidos</h1>
                 <OrdersCardList/>
             </section>
         </main>
