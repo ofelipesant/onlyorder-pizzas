@@ -12,7 +12,7 @@
 
     .navigation
         width: 200px
-
+        
         display: flex
         flex-direction: row
         position: absolute
@@ -35,4 +35,11 @@
         width: 122px
         padding-top: 33px
         filter: drop-shadow(2px 2px 0 white)
+
+@media (max-width: 500px)
+    .navigation
+        display: flex
+        flex-wrap: wrap
+        flex-direction: column
+        padding-top: 5px
     
