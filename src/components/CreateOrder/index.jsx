@@ -5,7 +5,7 @@ import { OrderContext } from "../../contexts/orderContext"
 import './create-order.sass'
 
 export default function CreateOrder() {
-    const { productsSelected, setProductsSelected, customerName, setCustomerName, setTotalValue } = useContext(OrderContext)
+    const { productsSelected, setProductsSelected, customerName, setCustomerName, setTotalValue, orders } = useContext(OrderContext)
     const { register, handleSubmit } = useForm()
 
     const addProduct = (data) => {
@@ -32,7 +32,6 @@ export default function CreateOrder() {
         })
         setTotalValue(value)
     }, [productsSelected])
-
 
     return (
         <section className="create-order">
